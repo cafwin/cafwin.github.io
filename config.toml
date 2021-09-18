@@ -62,20 +62,3 @@ publishDate = ['publishDate', 'date']
 
   [markup.tableOfContents]
     ordered = true
-
-[taxonomies]
-  book = 'books'
-  technical-writing = 'technical-writings'
-  podcast = 'podcasts'
-  manga = 'mangas'
-  ceo = 'ceos'
-  researcher = 'researchers'
-  engineer = 'engineers'
-  programming-language = 'programming-languages'
-  tool = 'tools'
-  cs-concept = 'cs-concepts'
-  psych-concepts = 'psych-concepts'
-
-  
-
-
