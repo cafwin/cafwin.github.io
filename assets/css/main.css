@@ -140,6 +140,16 @@ main#content header#post-header div {
     color: #767676;
 }
 
+div.highlight {
+  max-width: 770px;
+  margin: 0 25px;
+}
+div.highlight pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  border-radius: 5px;
+}
+
 main#content #toc {
     line-height: 26px;
     margin: 16px 0;
