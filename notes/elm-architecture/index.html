@@ -1,0 +1,87 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="cafwin's personal blog">
+<link rel="shortcut icon" href=https://cafwin.github.io/favicon.ico>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}}</script>
+<link rel=stylesheet href=/css/style.min.css>
+<title>Elm Architecture</title>
+</head>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}}</script>
+<body><header id=banner>
+<h2><a href=https://cafwin.github.io/>cafwin</a></h2>
+<nav>
+<ul>
+<li>
+<a href=/posts/ title=posts>posts</a>
+</li><li>
+<a href=/reflections/ title=reflections>reflections</a>
+</li><li>
+<a href=/notes/ title=notes>notes</a>
+</li><li>
+<a href=/about/ title=about>about</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=content><div class=social-icons><a href=https://cafwin.github.io/index.xml target=_blank rel="noopener noreferrer me" title=rss><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a><a href=https://github.com/cafwin target=_blank rel="noopener noreferrer me" title=github><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div><article>
+<header id=post-header>
+<h1>Elm Architecture</h1>
+<div>
+Updated <time>September 18, 2021</time>
+</div>
+</header><p><code>main</code> value is what gets shown on screen. Think of it as the high-level description of our program.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-elm data-lang=elm><span class=kr>main </span><span class=nf>=</span> 
+    <span class=kt>Browser</span><span class=nf>.</span><span class=nv>sandbox</span> <span class=p>{</span> <span class=nv>init</span> <span class=nf>=</span> <span class=nv>init</span><span class=p>,</span> <span class=nv>update</span> <span class=nf>=</span> <span class=nv>update</span><span class=p>,</span> <span class=nv>view</span> <span class=nf>=</span> <span class=nv>view</span> <span class=p>}</span>
+</code></pre></div><p><code>model</code> captures all the detail as data.
+Example: Use an <code>Int</code> value to track the current count. We can see that in our initial value: 0.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-elm data-lang=elm><span class=kr>type</span> <span class=kr>alias</span> <span class=kt>Model</span> <span class=nf>=</span> <span class=kt>Int</span>
+
+<span class=nv>init</span> <span class=nf>:</span> <span class=kt>Model</span>
+<span class=nv>init</span> <span class=nf>=</span>
+    <span class=mi>0</span>
+</code></pre></div><p><code>view</code> displays the <code>Model</code> on the screen.
+Example:
+- Takes in <code>Model</code> as an arg and outputs HTML.
+- It says we want to show a dec btn, count, inc btn.
+- <code>onClick</code> handler for each button says when clicked, generate msg dec, inc, respectively</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-elm data-lang=elm><span class=nv>view</span> <span class=nf>:</span> <span class=kt>Model</span> <span class=nf>-&gt;</span> <span class=kt>Html</span> <span class=kt>Msg</span>
+<span class=nv>view</span> <span class=nv>model</span> <span class=nf>=</span>
+    <span class=nv>div</span> <span class=p>[]</span>
+        <span class=p>[</span> <span class=nv>button</span> <span class=p>[</span> <span class=nv>onClick</span> <span class=kt>Decrement</span> <span class=p>]</span> <span class=p>[</span> <span class=nv>text</span> <span class=s>&#34;-&#34;</span> <span class=p>]</span>
+        <span class=p>,</span> <span class=nv>div</span> <span class=p>[]</span> <span class=p>[</span> <span class=nv>text</span> <span class=p>(</span><span class=kt>String</span><span class=nf>.</span><span class=nv>fromInt</span> <span class=nv>model</span><span class=p>)</span> <span class=p>]</span>
+        <span class=p>,</span> <span class=nv>button</span> <span class=p>[</span> <span class=nv>onClick</span> <span class=kt>Increment</span> <span class=p>]</span> <span class=p>[</span> <span class=nv>text</span> <span class=s>&#34;+&#34;</span> <span class=p>]</span>
+        <span class=p>]</span>
+</code></pre></div><p><code>update</code> describes how our <code>Model</code> will change over time.</p>
+<p>Example:
+- first, define 2 messages we might get
+- if we get <code>Increment</code> msg, +1 otherwise -1</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-elm data-lang=elm><span class=kr>type</span> <span class=kt>Msg</span> <span class=nf>=</span> <span class=kt>Increment</span> <span class=nf>|</span> <span class=kt>Decrement</span>
+
+<span class=nv>update</span> <span class=nf>:</span> <span class=kt>Msg</span> <span class=nf>-&gt;</span> <span class=kt>Model</span> <span class=nf>-&gt;</span> <span class=kt>Model</span>
+<span class=nv>update</span> <span class=nv>msg</span> <span class=nv>model</span> <span class=nf>=</span> 
+    <span class=kr>case</span> <span class=nv>msg</span> <span class=kr>of</span>
+        <span class=kt>Increment</span> <span class=nf>-&gt;</span>
+            <span class=nv>model</span> <span class=nf>+</span> <span class=mi>1</span>
+
+        <span class=kt>Decrement</span> <span class=nf>-&gt;</span>
+            <span class=nv>model</span> <span class=nf>-</span> <span class=mi>1</span>
+</code></pre></div><p>In summary, every msg runs through update to get a new model, then we call view to show the new model on screen, then repeat. User input generates a msg, updates model, view it on screen, &mldr;</p>
+<p>Elm starts by rendering the initial value on screen. From there you enter into this loop:</p>
+<ol>
+<li>Wait for user input.</li>
+<li>Send a message to update</li>
+<li>Produce a new Model</li>
+<li>Call view to get new HTML</li>
+<li>Show the new HTML on screen</li>
+<li>Repeat!</li>
+</ol>
+</article>
+</main><footer id=footer>
+Copyright © 2021 Cafwin
+</footer></body>
+</html>
