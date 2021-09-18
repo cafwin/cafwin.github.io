@@ -1,0 +1,81 @@
+baseURL = "https://cafwin.github.io/"
+languageCode = "en-us"
+title = "cafwin"
+enableInlineShortcodes = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+summaryLength=20
+enableGitInfo = true
+
+[frontmatter]
+date = ['date', 'publishDate', 'lastmod']
+expiryDate = ['expiryDate']
+lastmod = [':git', 'lastmod', 'date', 'publishDate']
+publishDate = ['publishDate', 'date']
+
+
+[params]
+  description = "cafwin's personal blog"
+  copyright = "Copyright © 2021 Cafwin"
+  highlight = true
+    [[params.socialIcons]]
+      name = "rss"
+      url = "https://cafwin.github.io/index.xml"
+    [[params.socialIcons]]
+      name = "github"
+      url = "https://github.com/cafwin"
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "posts"
+    title = "posts"
+    url = "/posts/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "reflections"
+    name = "reflections"
+    title = "reflections"
+    url = "/reflections/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "notes"
+    name = "notes"
+    title = "notes"
+    url = "/notes/"
+    weight = 30
+
+  [[menu.main]]
+    identifier = "about"
+    name = "about"
+    title = "about"
+    url = "/about/"
+    weight = 40
+
+[permalinks]
+  posts = "/:title/"
+
+[markup.goldmark.renderer]
+  # Allow HTML in Markdown
+  unsafe = true
+
+  [markup.tableOfContents]
+    ordered = true
+
+[taxonomies]
+  book = 'books'
+  technical-writing = 'technical-writings'
+  podcast = 'podcasts'
+  manga = 'mangas'
+  ceo = 'ceos'
+  researcher = 'researchers'
+  engineer = 'engineers'
+  programming-language = 'programming-languages'
+  tool = 'tools'
+  cs-concept = 'cs-concepts'
+  psych-concepts = 'psych-concepts'
+
+  
+
+

@@ -1,0 +1,12 @@
+<h3 class="posts">Reflections</h3>
+<ul id="posts">
+{{- range where site.RegularPages "Type" "reflection" }}
+    <li>
+        <a href="{{ .Permalink }}">
+            {{ .Title }}
+        </a>
+        <small><time>{{ .Date.Format "Jan 2, 2006" }}</time></small>
+        <div class="summary">{{ .Summary }}</div>
+    </li>
+{{- end }}
+</ul>
