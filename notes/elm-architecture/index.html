@@ -32,9 +32,12 @@
 <header id=post-header>
 <h1>Elm Architecture</h1>
 <div>
-Updated <time>September 18, 2021</time>
+Updated <time>September 19, 2021</time>
 </div>
-</header><p><code>main</code> value is what gets shown on screen. Think of it as the high-level description of our program.</p>
+</header><blockquote>
+<p>Elm is a functional language that compiles to JavaScript.</p>
+</blockquote>
+<p><code>main</code> value is what gets shown on screen. Think of it as the high-level description of our program.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-elm data-lang=elm><span class=kr>main </span><span class=nf>=</span> 
     <span class=kt>Browser</span><span class=nf>.</span><span class=nv>sandbox</span> <span class=p>{</span> <span class=nv>init</span> <span class=nf>=</span> <span class=nv>init</span><span class=p>,</span> <span class=nv>update</span> <span class=nf>=</span> <span class=nv>update</span><span class=p>,</span> <span class=nv>view</span> <span class=nf>=</span> <span class=nv>view</span> <span class=p>}</span>
 </code></pre></div><p><code>model</code> captures all the detail as data.
