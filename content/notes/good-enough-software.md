@@ -63,4 +63,4 @@ A few questions to ask and think about:
 - **When or where would this work** : Is it too late? early? under what circumstances? Don't stop with first order thinking, what will happen after that?
 - **Why is this a problem** : Is there an underlying model? how does that model work?
 
-Act! Immediately finishing this chapter, [I learnt Elm]("/notes/elm-architecture.md").
+Act! Immediately finishing this chapter, [I learnt Elm]("./elm-architecture.md").
