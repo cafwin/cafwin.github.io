@@ -6,6 +6,8 @@ type: "note"
 draft: false
 ---
 
+> Elm is a functional language that compiles to JavaScript.
+
 `main` value is what gets shown on screen. Think of it as the high-level description of our program.
 
 ```elm
